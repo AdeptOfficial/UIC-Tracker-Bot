@@ -5,13 +5,15 @@
  * @info Remove all courses roles from all trackers to be able to prepare for the new semester
  */
 
+const config = require("./../config.js");
+
 const Discord = require("discord.js");
 const client = new Discord.Client(
     {fetchAllMembers: true}
 );
 
 module.exports = function (msg) {
-    if (msg.author.id === "351434936655282188") {
+    if (msg.author.id === config.ownerToken) {
 
         // testing
         console.log("remove course role function");
