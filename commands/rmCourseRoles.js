@@ -23,12 +23,13 @@ module.exports = function (msg) {
         msg.guild.roles.cache.each(roles => rolesArray.push(roles.name))
         //console.log(rolesArray);
 
+        const arr_classCourseType = ["CS ", "MATH ", "STAT ", "IE "];
         // go through roles
         for (const x in rolesArray) {
             // replace all unnecessary characters in a roles 
             rolesArray[x].replace("'", " ");
-            // courses roles
-            if (rolesArray[x].startsWith('CS ') || rolesArray[x].startsWith('MATH ') || rolesArray[x].startsWith('STAT ') || rolesArray[x].startsWith('IE ')) {
+            // confirmed courses roles
+            if (arr_classCourseType.some(c => rolesArray[x].startsWith(c))) {
                 let Role = msg.guild.roles.cache.find(role => role.name === rolesArray[x]);
                 //for each memeber in the server
                 Role.members.forEach((member, i) => { // Looping through the members of Role.
@@ -36,6 +37,7 @@ module.exports = function (msg) {
                         member.roles.remove(Role); // Removing the Role.
                     }, i * 1000);
                 });
+                msg.channel.send(`${Role} has been removed from all users`)
             }
         }
 
@@ -43,7 +45,7 @@ module.exports = function (msg) {
         //msg.guild.members.fetchMembers
 
 
-        msg.channel.send("DONE...");
+        //msg.channel.send("DONE...");
 
     } else {
         console.log("Current user cannot use this command");
