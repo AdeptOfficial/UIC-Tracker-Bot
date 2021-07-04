@@ -42,7 +42,7 @@ module.exports = async function (msg) {
     let tokens = msg.content.split(" ");
     let command = tokens.shift();
     // used prefix
-    if (command.charAt(0) === "!") {
+    if (command.charAt(0) === prefix) {
         command = command.substring(1);
         try { // if cmd is in the cmds list
             commands[command](msg, tokens);

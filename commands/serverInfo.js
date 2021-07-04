@@ -19,7 +19,7 @@ module.exports = function (msg, tokens) {
     const { name, region, memberCount} = guild
     const icon = guild.iconURL()
     const sendTime = msg.createdAt
-    console.log(name, region, memberCount)
+    //console.log(name, region, memberCount)
 
     // building embed
     const embed = new Discord.MessageEmbed()
