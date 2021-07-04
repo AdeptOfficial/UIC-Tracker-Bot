@@ -14,6 +14,7 @@ const { prefix } = require('./config.js');
 
 // user cmds
 const testFunction = require('./commands/test');
+const serverInfo = require('./commands/serverInfo');
 
 // admin cmds
 
@@ -26,6 +27,7 @@ const rmCourseRoles = require('./commands/rmCourseRoles');
 const commands = {
     // users
     test: testFunction,
+    serverinfo: serverInfo,
     // admins
 
     // owner
@@ -42,7 +44,7 @@ module.exports = async function (msg) {
     // used prefix
     if (command.charAt(0) === "!") {
         command = command.substring(1);
-        try { // if cmd is in the cmd list
+        try { // if cmd is in the cmds list
             commands[command](msg, tokens);
         } catch (error) { // unknown cmd
             console.log(`${command} is an unknown command\n`, error);
