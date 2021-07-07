@@ -10,5 +10,6 @@ require('dotenv').config();
 module.exports = { 
     "token" : process.env.BOTTOKEN,
     "ownerToken" : process.env.OWNERTOKEN,
-    "prefix" : "!"
+    "prefix" : "!",
+    "mongoPath" : "mongodb://localhost:27017",
 };

@@ -1,7 +1,7 @@
 /**
  * @author Leland 'AdepT' Moy
  * @license AdeptProduction
- * @file main.js
+ * @file index.js
  * @info main code for UIC Tracker Bot
  */
 
@@ -12,12 +12,25 @@ const client = new Discord.Client(
     {fetchAllMembers: true}
 );
 const config = require("./config.js");
+const mongo = require('./mongo.js')
+
+
+
 // cmd handler
 const cmdHandler = require('./cmdhandler.js');
 
 // start up prompt
-client.on('ready', () => {
+client.on('ready', async () => {
     console.log(`Logged in as ${client.user.tag}!`);
+
+    // load mongo
+    await mongo().then(mongoose => {
+        try {
+            console.log("Connected to mongo!")
+        } finally {
+            mongoose.connection.close()
+        }
+    })
 })
 
 
