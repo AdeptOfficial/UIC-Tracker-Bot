@@ -16,13 +16,14 @@ const mongo = require('./mongo.js')
 
 
 
-// cmd handler
+// handlers
 const cmdHandler = require('./cmdhandler.js');
+const channelHandler = require('./channelhandler.js')
 
 // start up prompt
 client.on('ready', async () => {
     console.log(`Logged in as ${client.user.tag}!`);
-
+    channelHandler(client)
     // load mongo
     await mongo().then(mongoose => {
         try {
@@ -35,7 +36,7 @@ client.on('ready', async () => {
 
 
 
-// cmd Handler prompt
+// handler prompt
 client.on("message", cmdHandler);
 
 // bot login
