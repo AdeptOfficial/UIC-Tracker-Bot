@@ -6,38 +6,55 @@
  */
 
 // basic setup
-const Discord = require("discord.js");
-//const client = new Discord.Client();
-const client = new Discord.Client(
-    {fetchAllMembers: true}
-);
+const path = require('path')
 const config = require("./config.js");
 const mongo = require('./mongo.js')
-
-
-
-// handlers
-const cmdHandler = require('./cmdhandler.js');
-const channelHandler = require('./channelhandler.js')
-
-// start up prompt
-client.on('ready', async () => {
-    console.log(`Logged in as ${client.user.tag}!`);
-    channelHandler(client)
-    // load mongo
-    await mongo().then(mongoose => {
-        try {
-            console.log("Connected to mongo!")
-        } finally {
-            mongoose.connection.close()
-        }
-    })
+const Commando = require('discord.js-commando')
+const mongoose = require('mongoose')
+const client = new Commando.CommandoClient({
+    owner: config.ownerToken,
+    commandPrefix: config.prefix,
+    fetchAllMembers: true
 })
 
 
+// inactive handlers
+//const cmdHandler = require('./cmdhandler.js');
+//const channelHandler = require('./channelhandler.js')
+//const eventHandler = require('./eventHandler.js')
 
-// handler prompt
-client.on("message", cmdHandler);
+// express and connect to mongodb setup
+const express = require("express");
+const app = express();
+const port = 4000;
+app.listen(port, async function() {
+console.log("Server is running on Port: " + port);
+    // load mongo
+    mongoose.connect(config.mongoPath, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    })
+    .then(x => console.log(`Connected to Database! Database name: "${x.connections[0].name}"`))
+    .catch(err => console.error('Error connecting to mongo', err));
+});
+
+
+// discord client start up prompt
+client.on('ready', async () => {
+    console.log(`Logged in as ${client.user.tag}!`);
+
+    // load commando settings and cmds
+    client.registry
+    .registerGroups([
+        ['misc', 'misc commands'],
+        ['moderation', 'moderation commands'],
+        ['users', 'common user commands'],
+    ])
+    .registerDefaults()
+    .registerCommandsIn(path.join(__dirname, 'commando-cmds'))
+})
 
 // bot login
 client.login(config.token);

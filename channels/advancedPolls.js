@@ -8,7 +8,7 @@
 const { Message } = require("discord.js")
 
 // poll channel list
-//                  testing ground    ,  Tracker Poll,         Tech Support,                Community mod
+//                  testing ground    ,  Tracker Poll,         Tech Support,             Community mod
 const channels = ['862499931109851166', '802614902979166228', '787043179630952450', '799701775287713892']
 
 module.exports = (client) => {

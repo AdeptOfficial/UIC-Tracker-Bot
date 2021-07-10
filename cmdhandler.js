@@ -2,6 +2,7 @@
  * @author Leland 'AdepT' Moy
  * @license AdeptProduction
  * @file cmdhandler.js
+ * @status INACTIVE
  * @info command handler - cmds stored into an object, check if cmd exists.
  */
 
@@ -15,7 +16,6 @@ const { prefix } = require('./config.js');
 // user cmds
 const testFunction = require('./commands/test');
 const serverInfo = require('./commands/serverInfo');
-
 // admin cmds
 
 // owner cmds
@@ -28,6 +28,7 @@ const commands = {
     // users
     test: testFunction,
     serverinfo: serverInfo,
+    createprofile: createProfile,
     // admins
 
     // owner
