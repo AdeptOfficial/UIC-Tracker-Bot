@@ -26,6 +26,11 @@ module.exports = class DiscordStatusCommand extends Commando.Command {
                 prompt: 'what is the actual content?',
                 type: 'string'
             }, {
+                key: 'status',
+                prompt: 'What is the status of the bot?',
+                oneOf: ['online', 'idle', 'invisible', 'dnd'],
+                type: 'string',
+            }, {
                 key: 'urlOption',
                 prompt: 'is there an URL?',
                 oneOf: [ 'yes', 'no'],
@@ -38,7 +43,7 @@ module.exports = class DiscordStatusCommand extends Commando.Command {
         })
     }
 
-    run (msg, { content, activity, urlOption, url }) {
+    run (msg, { content, activity, urlOption, url, status }) {
         let ing = activity.toUpperCase()
         if (urlOption === 'yes' && content != '') {
             this.client.user.setPresence({
@@ -46,7 +51,8 @@ module.exports = class DiscordStatusCommand extends Commando.Command {
                     name: `${content}`,
                     type: `${ing}`,
                     url: `${url}`
-                }
+                },
+                status: `${status}`
             })
             .then(console.log(`${ing} ${content} with ${url}`))
             .catch(err => console.error(err))
@@ -55,7 +61,8 @@ module.exports = class DiscordStatusCommand extends Commando.Command {
                 activity: {
                     name: `${content}`,
                     type: `${ing}`,
-                }
+                },
+                status: `${status}`
             })
             .then(console.log(`${ing} ${content}`))
             .catch(err => console.error(err))
@@ -64,7 +71,8 @@ module.exports = class DiscordStatusCommand extends Commando.Command {
                 activity: {
                     name: '',
                     type: '',
-                }
+                },
+                status: `${status}`
             })
             .then(console.log(`set Activity to none`))
             .catch(err => console.error(err))
