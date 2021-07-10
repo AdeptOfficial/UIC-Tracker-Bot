@@ -18,16 +18,18 @@ module.exports = class RmCourseRoles extends Commando.Command {
             name: 'removecr',
             group: 'moderation',
             memberName: 'removingroles',
-            description: 'Command to remove all course roles'
+            description: 'Command to remove all course roles',
+            args: [{
+                key: 'test',
+                prompt: 'Testing purposes?',
+                oneOf: [ 'yes', 'no'],
+                type: 'string',
+            }]
         })
     }
 
-    run = function (msg) {
-        if (msg.author.id === config.ownerToken) {
-
-            // testing
-            console.log("remove course role function");
-
+    run = function (msg, { test }) {
+        if (msg.author.id === config.ownerToken && test === 'no') {
             // get all the roles and store them in an array
             var rolesArray = [];
             msg.guild.roles.cache.each(roles => rolesArray.push(roles.name))
@@ -54,13 +56,12 @@ module.exports = class RmCourseRoles extends Commando.Command {
                     msg.channel.send(`${Role} has been removed from all users`)
                 }
             }
+        } else if (msg.author.id === config.ownerToken && test === 'yes') {
+            msg.channel.send('testing mode: ON')
+            var rolesArray = [];
+            msg.guild.roles.cache.each(roles => rolesArray.push(roles.name))
 
-            // get all the users in the server
-            //msg.guild.members.fetchMembers
-
-
-            //msg.channel.send("DONE...");
-
+            msg.channel.send(rolesArray)
         } else {
             console.log("Current user cannot use this command");
             msg.channel.send("You cannot use this command");

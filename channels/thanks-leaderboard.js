@@ -51,7 +51,7 @@ const updateLeaderboard = async (client) => {
 
     setTimeout(() => {
         updateLeaderboard(client)
-        console.log('updated leaderboard')
+        console.log('updated thanks-leaderboard')
     }, 1000 * 60) // 60 seconds
 }
 

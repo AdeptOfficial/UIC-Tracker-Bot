@@ -74,6 +74,17 @@ client.on('ready', async () => {
     .registerCommandsIn(path.join(__dirname, 'commando-cmds'))
 })
 
+client.on('ready', async () => {
+    await client.user.setPresence({
+        activity: {
+            name: 't! commands',
+            type: 'Listening',
+        },
+        status: 'dnd'
+    })
+    .then(console.log(`Default Status loaded!`))
+    .catch(err => console.error(err))
+})
 // help promotes thanks command
 client.on('message', function(msg) {
     if(msg.content.startsWith('thanks') || msg.content.startsWith('thx') || msg.content.startsWith('thnks') || msg.content.startsWith('ty')) {
