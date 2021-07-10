@@ -10,6 +10,11 @@ const path = require('path')
 const config = require("./config.js");
 const Commando = require('discord.js-commando')
 const mongoose = require('mongoose')
+
+// commando to mongodb
+const MongoClient = require('mongodb').MongoClient;
+const MongoDBProvider = require('commando-provider-mongo').MongoDBProvider;
+
 const client = new Commando.CommandoClient({
     owner: config.ownerToken,
     commandPrefix: config.prefix,
@@ -39,6 +44,17 @@ console.log("Server is running on Port: " + port);
     .catch(err => console.error('Error connecting to mongo', err));
 });
 
+//commando to mongo server setup
+client.setProvider(
+    MongoClient.connect(config.mongoPath, {
+        useUnifiedTopology: true
+    })
+        .then(client => {
+            return new MongoDBProvider(client, 'Tracker')
+        }).catch((err) => {
+            console.error(err)
+        })
+)
 
 // discord client start up prompt
 client.on('ready', async () => {
@@ -58,10 +74,12 @@ client.on('ready', async () => {
     .registerCommandsIn(path.join(__dirname, 'commando-cmds'))
 })
 
-client.on('message', (msg) => {
+// help promotes thanks command
+client.on('message', function(msg) {
     if(msg.content.startsWith('thanks') || msg.content.startsWith('thx') || msg.content.startsWith('thnks') || msg.content.startsWith('ty')) {
-        msg.reply('Consider thanking the person by using !thank @user :D');
+        msg.reply('Consider thanking the person by using !thank @user :D')
     }
 })
+
 // bot login
 client.login(config.token);
