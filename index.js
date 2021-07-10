@@ -8,7 +8,6 @@
 // basic setup
 const path = require('path')
 const config = require("./config.js");
-const mongo = require('./mongo.js')
 const Commando = require('discord.js-commando')
 const mongoose = require('mongoose')
 const client = new Commando.CommandoClient({
@@ -20,7 +19,7 @@ const client = new Commando.CommandoClient({
 
 // inactive handlers
 //const cmdHandler = require('./cmdhandler.js');
-//const channelHandler = require('./channelhandler.js')
+const channelHandler = require('./channelhandler.js')
 //const eventHandler = require('./eventHandler.js')
 
 // express and connect to mongodb setup
@@ -45,16 +44,24 @@ console.log("Server is running on Port: " + port);
 client.on('ready', async () => {
     console.log(`Logged in as ${client.user.tag}!`);
 
+    // load channel settings
+    channelHandler(client)
     // load commando settings and cmds
     client.registry
     .registerGroups([
         ['misc', 'misc commands'],
         ['moderation', 'moderation commands'],
         ['users', 'common user commands'],
+        ['thanks', 'commands to help thank people'],
     ])
     .registerDefaults()
     .registerCommandsIn(path.join(__dirname, 'commando-cmds'))
 })
 
+client.on('message', (msg) => {
+    if(msg.content.startsWith('thanks') || msg.content.startsWith('thx') || msg.content.startsWith('thnks') || msg.content.startsWith('ty')) {
+        msg.reply('Consider thanking the person by using !thank @user :D');
+    }
+})
 // bot login
 client.login(config.token);

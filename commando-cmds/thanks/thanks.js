@@ -1,12 +1,13 @@
+require('module-alias/register')
 const Commando = require('discord.js-commando')
-const thanksSchema = require('../../schemas/thanks-schemas.js')
+const thanksSchema = require('@schemas/thanks/thanks-schemas.js')
 
 module.exports = class ThanksCommand extends Commando.Command {
     constructor(client) {
         super(client, {
             name: 'thanks',
-            group: 'users',
-            memberName: 'users',
+            group: 'thanks',
+            memberName: 'thanks',
             description: 'thanks a user for helping you'
         })
     }
