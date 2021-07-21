@@ -34,6 +34,11 @@ module.exports = class ThanksCommand extends Commando.Command {
             return
         }
 
+        if(target.bot === true) {
+            msg.reply('You cannot thank a bot!')
+            return
+        }
+
         let authorData = await thanksSchema.findOne({
             userId: authorId,
             guildId

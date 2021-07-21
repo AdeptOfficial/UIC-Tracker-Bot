@@ -11,15 +11,18 @@
   "dependencies": {
     "commando-provider-mongo": "^2.1.0",
     "discord.js": "^12.5.3",
-    "discord.js-commando": "git+https://github.com/discordjs/commando.git",
+    "discord.js-commando": "github:discordjs/commando",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "fs": "^0.0.1-security",
     "module-alias": "^2.2.2",
     "mongoose": "^5.13.2",
     "npm": "^7.19.1"
   },
   "_moduleAliases": {
     "@root": ".",
-    "@schemas": "./schemas"
+    "@schemas": "./schemas",
+    "@events": "./events",
+    "@commands": "./commands"
   }
 }

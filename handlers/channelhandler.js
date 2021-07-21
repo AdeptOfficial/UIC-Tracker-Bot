@@ -4,10 +4,10 @@
  * @file channelhandler.js
  * @info channel handler - lanuches per channel settings within the server
  */
-
+require('module-alias/register')
 // load channel settings
-const advancedPolls = require('./channels/advancedPolls.js');
-const thanksLeaderboard = require('./channels/thanks-leaderboard.js');
+const advancedPolls = require('@events/guild/channels/advancedPolls.js');
+const thanksLeaderboard = require('@events/guild/channels/thanks-leaderboard.js');
 
  module.exports = (client) => {
     advancedPolls(client)

@@ -9,7 +9,6 @@ require('dotenv').config();
 
 module.exports = { 
     "token" : process.env.BOTTOKEN,
-    "ownerToken" : process.env.OWNERTOKEN,
-    "prefix" : "!", 
-    "mongoPath" : "mongodb://localhost:27017/Tracker",
+    "ownerToken" : process.env.OWNERTOKEN,    
+    "mongoPath" : process.env.MONGOPATH,
 };
