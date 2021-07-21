@@ -2,7 +2,7 @@ require('module-alias/register')
 const thanksLeaderboardSchema = require('@schemas/thanks/thanks-leaderboard-schemas.js')
 const thanksSchema = require('@schemas/thanks/thanks-schemas.js')
 
-const fetchTopMemebers = async (guildId) => {
+const fetchTopMemebers = async (guildId, date) => {
     let text = ''
 
     const results = await thanksSchema.find({
@@ -19,6 +19,7 @@ const fetchTopMemebers = async (guildId) => {
     }
 
     text += '\nThis is updated every minute'
+    text += `\nLast Updated: ${date}`
 
     return text
 }
@@ -35,11 +36,13 @@ const updateLeaderboard = async (client) => {
         if (guild) {
             // channel exist within the server
             const channel = guild.channels.cache.get(channelId)
+            const time = new Date()
+            const d = new Date();
+            date = d.getHours() + ":" + d.getMinutes() + ", " + d.toDateString();
             if (channel) {
                 const messages = await channel.messages.fetch()
                 const firstMessage = messages.first()
-
-                const topMembers = await fetchTopMemebers(guildId)
+                const topMembers = await fetchTopMemebers(guildId, date)
                 if (firstMessage) {
                     firstMessage.edit(topMembers)
                 } else {
