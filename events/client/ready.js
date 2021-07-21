@@ -7,7 +7,6 @@
 
 const mongo = require('./mongo');
 const thanksHelper = require('./thanksHelper');
-const prefix = require('../../prefix');
 
 
 require('module-alias/register')
