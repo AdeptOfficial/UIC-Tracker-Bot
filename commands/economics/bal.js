@@ -25,7 +25,9 @@ module.exports = {
         // if none is mentioned or target is author - default to author's balances
         if (!target || target.id === msg.author.id) {
             // see if the author has a profile
-            msg.reply(`Your wallet bal is ${profileData.USD} USD, you banks bal is ${profileData.bank} USD`);
+            let wallet = profileData.USD.toFixed(2)
+            let bank = profileData.bank.toFixed(2)
+            msg.reply(`\n Wallet: ${wallet} USD \n Bank: ${bank} USD`);
             return;
         }
 
@@ -39,7 +41,9 @@ module.exports = {
         if (target && target.bot === false) {
             // checking public settings
             if (profileData.public) {
-                msg.reply(`<@${target.id}>'s wallet bal is ${profileData.USD} USD, banks bal is ${profileData.bank} USD`)
+                let wallet = profileData.USD.toFixed(2)
+                let bank = profileData.bank.toFixed(2)
+                msg.reply(`\n <@${target.id}>'s Wallet: ${wallet} USD \n <@${target.id}>'s Bank: ${bank} USD`);
             } else if (!(profileData.public)) {
                 msg.reply(`<@${target.id}>'s profile is currently not public`)
             }
