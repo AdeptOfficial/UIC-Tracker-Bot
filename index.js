@@ -4,7 +4,6 @@
  * @file index.js
  * @info main code for UIC Tracker Bot
  */
-
 // basic setup
 const path = require('path')
 const config = require("./config.js");
@@ -41,6 +40,7 @@ client.on('ready', async () => {
     ])
     .registerCommandsIn(path.join(__dirname, 'commando-cmds'))
 })
+
 
 // bot login
 client.login(config.token);

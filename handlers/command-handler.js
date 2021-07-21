@@ -23,7 +23,7 @@ module.exports = ( client, Discord ) => {
 
     }
 
-    // load commands without folders
+    // load commands with folders
     const load_dir = (dirs) => {
         const command_files = fs.readdirSync(`./commands/${dirs}`).filter(file => file.endsWith('.js'));
         for (const file of command_files) {

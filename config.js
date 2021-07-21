@@ -5,6 +5,7 @@
  * @info config code for UIC Tracker Bot, all environment variables are BLOCKED with env
  */
 
+require('module-alias/register')
 require('dotenv').config();
 
 module.exports = { 

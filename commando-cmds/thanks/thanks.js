@@ -34,7 +34,7 @@ module.exports = class ThanksCommand extends Commando.Command {
             return
         }
 
-        if(target.bot === true) {
+        if(target.bot) {
             msg.reply('You cannot thank a bot!')
             return
         }
