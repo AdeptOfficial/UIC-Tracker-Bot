@@ -3,6 +3,7 @@ const profileModel = require('@schemas/economy/profile-schemas.js')
 
 module.exports = {
     name: 'withdraw',
+    cooldown: 10,
     aliases: ["wd"],
     permissions: [],
     description: 'withdraw USD into your bank!',

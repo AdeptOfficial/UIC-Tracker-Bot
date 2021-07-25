@@ -23,6 +23,9 @@
     "@root": ".",
     "@schemas": "./schemas",
     "@events": "./events",
-    "@commands": "./commands"
+    "@commands": "./commands",
+    "@handlers": "./handlers",
+    "@games": "./games",
+    "@Util": "./Util"
   }
 }

@@ -36,7 +36,6 @@ const updateLeaderboard = async (client) => {
         if (guild) {
             // channel exist within the server
             const channel = guild.channels.cache.get(channelId)
-            const time = new Date()
             const d = new Date();
             date = d.getHours() + ":" + d.getMinutes() + ", " + d.toDateString();
             if (channel) {

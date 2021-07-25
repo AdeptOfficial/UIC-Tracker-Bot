@@ -17,6 +17,11 @@ module.exports = ( client, Discord ) => {
         const command = require(`@commands/${file}`);
         if (command.name) {
             client.commands.set(command.name, command);
+            if (command.aliases) {
+                command.aliases.forEach(alias => {
+                    client.commands.set(alias, command);
+                })
+            }
         } else {
             continue;
         }
@@ -41,5 +46,5 @@ module.exports = ( client, Discord ) => {
         }
     }
 
-    ['economics'].forEach(e => load_dir(e));
+    ['economics', 'mini-games'].forEach(e => load_dir(e));
 }
