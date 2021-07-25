@@ -7,7 +7,6 @@
 
 require('module-alias/register')
 const profileModel = require('@schemas/economy/profile-schemas.js');
-const { execute } = require('../ping');
 
 module.exports = {
     name: 'bal',
