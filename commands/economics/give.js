@@ -5,8 +5,9 @@ module.exports = {
     name: 'give',
     aliases: ["g"],
     cooldown: 10,
-    permissions: [],
-    description: 'give other people USD',
+    permissions: 'none',
+    expectedArgs: ["Positive Amount", "<@user>"],
+    description: 'Give other people USD',
     async execute(client, message, args, Discord, profileData) {
         // make sure the command is correctly formated
         if (!args.length) {
@@ -48,6 +49,12 @@ module.exports = {
             amount = parseFloat(strAmount).toFixed(2)
         } else {
             message.reply('Please add an amount to give!')
+            return
+        }
+
+        // negative amount
+        if (amount < 0) {
+            message.reply(`You cannot give negative amount of USD to ${target.username}`)
             return
         }
 

@@ -5,8 +5,9 @@ module.exports = {
     name: 'withdraw',
     cooldown: 10,
     aliases: ["wd"],
-    permissions: [],
-    description: 'withdraw USD into your bank!',
+    expectedArgs: ["Positive Amount"],
+    permissions: 'none',
+    description: 'Withdraw USD from your bank!',
     async execute(client, message, args, Discord, profileData) {
         // get amount to withdraw
         const strAmount = args[0]

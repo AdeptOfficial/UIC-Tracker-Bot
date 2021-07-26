@@ -9,10 +9,12 @@ require('module-alias/register')
 const profileModel = require('@schemas/economy/profile-schemas.js');
 
 module.exports = {
-    name: 'bal',
-    aliases: ['balance', 'balances'],
+    name: 'balance',
+    aliases: ['bal', 'balances'],
     cooldown: 10,
-    description: "get user's balance",
+    expectedArgs: ["Optional: <@user>"],
+    permissions: 'none',
+    description: "Get yours or targeted user's balance",
     // find the targeted bal user
     async execute (client, msg, args, Discord, profileData) {
         const target = msg.mentions.users.first()

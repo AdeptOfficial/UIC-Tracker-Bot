@@ -5,8 +5,9 @@ const config = require("@root/config.js");
 module.exports = {
     name: 'giveadmin',
     aliases: ["ga"],
-    permissions: [],
-    description: 'give free money',
+    expectedArgs: ["Positive Amount", "<@user>"],
+    permissions: 'OWNER',
+    description: 'Give free money',
     async execute(client, message, args, Discord, profileData) {
         // owner only command
         if (message.author.id != config.ownerToken) {

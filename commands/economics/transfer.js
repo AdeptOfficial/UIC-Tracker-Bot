@@ -6,8 +6,9 @@ module.exports = {
     name: 'transfer',
     cooldown: 10,
     aliases: ["t"],
-    permissions: [],
-    description: "transfer amount from user bank to another person's bank",
+    expectedArgs: ["Positive Amount", "<@user>"],
+    permissions: 'none',
+    description: "Transfer amount from user bank to another person's bank",
     async execute(client, message, args, Discord, profileData) {
         // make sure the command is correctly formated
         if (!args.length) {

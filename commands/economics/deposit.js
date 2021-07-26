@@ -4,9 +4,10 @@ const profileModel = require('@schemas/economy/profile-schemas.js')
 module.exports = {
     name: 'deposit',
     cooldown: 10,
-    aliases: ["dep"],
-    permissions: [],
-    description: 'desposit USD into your bank!',
+    aliases: ["dep", "dp"],
+    permissions: 'none',
+    expectedArgs: ["Positive Amount"],
+    description: 'Deposit USD into your bank!',
 
     async execute(client, message, args, Discord, profileData) {
         const strAmount = args[0]
