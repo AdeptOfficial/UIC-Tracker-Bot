@@ -46,5 +46,5 @@ module.exports = ( client, Discord ) => {
         }
     }
 
-    ['economics', 'mini-games'].forEach(e => load_dir(e));
+    ['economics', 'mini-games', 'school'].forEach(e => load_dir(e));
 }
