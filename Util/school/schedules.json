@@ -1,3 +1,13 @@
 {
-    "schedules": []
+    "schedules": [{
+        "userID": "185996030410489856",
+        "username": "123testing123",
+        "semester": "FALL 2021",
+        "scheduleURL": "https://cdn.discordapp.com/attachments/870788489770328177/870823862147907644/411066229550350337.png"
+    }, {
+        "userID": "351434936655282188",
+        "username": "AdepT",
+        "semester": "FALL 2021",
+        "scheduleURL": "https://cdn.discordapp.com/attachments/870788489770328177/870823870658117632/schedule_FALL_2021.jpg"
+    }]
 }

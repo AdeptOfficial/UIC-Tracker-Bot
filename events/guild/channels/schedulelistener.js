@@ -19,7 +19,7 @@ module.exports = (client, Discord) => {
             let newObj = {
                 userID: user,
                 username: username,
-                semester: content,
+                semester: 'FALL 2021',
                 scheduleURL: url
             }
             schedules.push(newObj)

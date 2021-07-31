@@ -6,7 +6,8 @@ function updateSchedule() {
     const { schedules } = require("@Util/school/schedules.json");
     return schedules
 }
-
+            // testing grounds,        UIC Tracker
+var channels = ['870788489770328177', '870476959946268712']
 
 module.exports = {
     name: 'schedule',
@@ -28,21 +29,27 @@ module.exports = {
         let url = ''
         let semester = ''
         schedules.forEach(schedule => {
-           if (schedule.userID = target.id) {
+           if (schedule.userID === target.id) {
                url = schedule.scheduleURL
                semester = schedule.semester
            }
         })
-
-        const scheduleEmbed = new Discord.MessageEmbed()
-        .setTitle(`${target.username}'s schedule for ${semester}`)
-        .setDescription('------------ ✨ Schedule ✨ ------------')
-        .setColor("RANDOM")
-        .setThumbnail(target.displayAvatarURL({dynamic: true}))
-        .setImage(url)
-        .setFooter('UIC-TRACKER-SERVICE ©2021', message.guild.iconURL())
-
-        message.reply(`Here is ${target.username}'s schedule!`, scheduleEmbed)
+        if (url) {
+            const scheduleEmbed = new Discord.MessageEmbed()
+            .setTitle(`${target.username}'s schedule for ${semester}`)
+            .setDescription('------------ ✨ Schedule ✨ ------------')
+            .setColor("RANDOM")
+            .setThumbnail(target.displayAvatarURL({dynamic: true}))
+            .setImage(url)
+            .setFooter('UIC-TRACKER-SERVICE ©2021', message.guild.iconURL())
+    
+            message.reply(`Here is ${target.username}'s schedule!`, scheduleEmbed)
+    
+            return
+        } else {
+            var channel = message.guild.channels.cache.get('870476959946268712').toString();
+            message.reply(`${target.username} has not upload their schedule in ${channel}.`)
+        }
 
         return
     }
