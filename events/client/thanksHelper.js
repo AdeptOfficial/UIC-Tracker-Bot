@@ -7,14 +7,14 @@ module.exports = (client) => {
         } else {
             if (msg.content.startsWith('thanks') || msg.content.startsWith('thx') || msg.content.startsWith('thnks') || msg.content.startsWith('ty')) {
                 msg.reply('Consider thanking the person by using !thank @user :D')
+                console.log('thank reminder used')
+                cooldown.add(client.user.id)
+                setTimeout(() => {
+                    // Removes the user from the set after a minute
+                    cooldown.delete(client.user.id);
+                    console.log('thank reminder reset')
+                  }, hour);
             }
-            console.log('thank reminder used')
-            cooldown.add(client.user.id)
-            setTimeout(() => {
-                // Removes the user from the set after a minute
-                cooldown.delete(client.user.id);
-                console.log('thank reminder reset')
-              }, hour);
         }
     })
 }
