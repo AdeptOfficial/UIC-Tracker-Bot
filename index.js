@@ -71,3 +71,6 @@ client.on("ready", async () => {
 
 // bot login
 client.login(config.token);
+
+
+// sharbel added this comment. Testing purposes
