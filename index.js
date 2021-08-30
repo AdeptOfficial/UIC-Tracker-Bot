@@ -42,12 +42,39 @@ client.on('ready', async () => {
 })
 
 
-// listening to role claim events
+// Course Roles Claim event
 client.on("ready", async () => {
 
     // update to tracker discord ids
     let guild = client.guilds.cache.find(guild => guild.id == '860320119036575804');
     let channel = await guild.channels.cache.find(ch => ch.id == '876999575947325470')
+
+    // You can set any limit you want, for performance I used a low number
+    channel.messages.fetch({ limit: 10 })
+        .then(async messages => {
+            messages.forEach(async message => {
+
+                if (message.partial) await message.fetch();
+                if (!message.guild) return;
+
+                for (let reactionObj of message.reactions.cache) {
+                    for (let reaction of reactionObj) {
+                        if (typeof reaction == "string") continue;
+                        reaction.users.fetch()
+                    }
+                }
+
+            });
+        })
+        .catch(console.error);
+});
+
+// Fun rolse claim event
+client.on("ready", async () => {
+
+    // update to tracker discord ids
+    let guild = client.guilds.cache.find(guild => guild.id == '860320119036575804');
+    let channel = await guild.channels.cache.find(ch => ch.id == '881396805370261575')
 
     // You can set any limit you want, for performance I used a low number
     channel.messages.fetch({ limit: 10 })

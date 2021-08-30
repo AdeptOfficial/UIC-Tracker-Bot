@@ -10,6 +10,7 @@ const advancedPolls = require('@events/guild/channels/advancedPolls.js');
 const thanksLeaderboard = require('@events/guild/channels/thanks-leaderboard.js');
 const scheduleListener = require('@events/guild/channels/schedulelistener.js')
 const getCourseRole = require('@events/guild/channels/reactcourserole.js')
+const getCommunityRole = require('@events/guild/channels/claim-roles.js')
 //const getCrypto = require('@events/guild/economics/getCrypto.js')
 
  module.exports = (client, Discord) => {
@@ -17,6 +18,7 @@ const getCourseRole = require('@events/guild/channels/reactcourserole.js')
     thanksLeaderboard(client)
     scheduleListener(client, Discord)
     getCourseRole(client, Discord)
+    getCommunityRole(client, Discord)
     //getCrypto()
     console.log("loaded channel settings!")
  }
