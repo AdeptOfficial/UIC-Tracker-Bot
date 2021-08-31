@@ -46,8 +46,8 @@ client.on('ready', async () => {
 client.on("ready", async () => {
 
     // update to tracker discord ids
-    let guild = client.guilds.cache.find(guild => guild.id == '860320119036575804');
-    let channel = await guild.channels.cache.find(ch => ch.id == '876999575947325470')
+    let guild = client.guilds.cache.find(guild => guild.id == '747533680548904985');
+    let channel = await guild.channels.cache.find(ch => ch.id == '780612474692173854')
 
     // You can set any limit you want, for performance I used a low number
     channel.messages.fetch({ limit: 10 })
@@ -73,8 +73,35 @@ client.on("ready", async () => {
 client.on("ready", async () => {
 
     // update to tracker discord ids
-    let guild = client.guilds.cache.find(guild => guild.id == '860320119036575804');
-    let channel = await guild.channels.cache.find(ch => ch.id == '881396805370261575')
+    let guild = client.guilds.cache.find(guild => guild.id == '747533680548904985');
+    let channel = await guild.channels.cache.find(ch => ch.id == '881614075350626344')
+
+    // You can set any limit you want, for performance I used a low number
+    channel.messages.fetch({ limit: 10 })
+        .then(async messages => {
+            messages.forEach(async message => {
+
+                if (message.partial) await message.fetch();
+                if (!message.guild) return;
+
+                for (let reactionObj of message.reactions.cache) {
+                    for (let reaction of reactionObj) {
+                        if (typeof reaction == "string") continue;
+                        reaction.users.fetch()
+                    }
+                }
+
+            });
+        })
+        .catch(console.error);
+});
+
+// project rolse claim event
+client.on("ready", async () => {
+
+    // update to tracker discord ids
+    let guild = client.guilds.cache.find(guild => guild.id == '747533680548904985');
+    let channel = await guild.channels.cache.find(ch => ch.id == '881614200978415677')
 
     // You can set any limit you want, for performance I used a low number
     channel.messages.fetch({ limit: 10 })
