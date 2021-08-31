@@ -1,5 +1,6 @@
-// testing ground,      UIC tracker discord
-let channels = ['881396805370261575', '780612474692173854']
+// testing ground,                      UIC tracker discord 
+                                        // project              community 
+let channels = ['881396805370261575', '881614200978415677', '881614075350626344']
 
 
 let roleName = '';
@@ -28,21 +29,18 @@ const handleReaction = (reaction, user, add) => {
     const emoji = reaction._emoji.name.toLowerCase()
     const { guild } = reaction.message
 
-    findRole(guild, emoji, user, add)
+    if (emoji === "botdevfollower") {
+        let member = guild.members.cache.find((member => member.id === user.id))
+        let role = guild.roles.cache.find(r => r.id === "867248551793131541");
+        if (add) {
+            member.roles.add(role)
+        } else {
+            member.roles.remove(role)
+        }
+        return
+    }
 
-    // // found role
-    // console.log(roleName)
-    // let role = guild.roles.cache.find(role => role.name === rolename)
-    // let member = guild.members.cache.find((member => member.id === user.id))
-    // if (role) {
-    //     if (add) {
-    //         member.roles.add(role)
-    //     } else {
-    //         member.roles.remove(role)
-    //     }
-    // } else {
-    //     console.log('role does not exist')
-    // }
+    findRole(guild, emoji, user, add)
 }
 
 module.exports = async (client, Discord) => {
