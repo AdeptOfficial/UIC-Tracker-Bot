@@ -86,7 +86,7 @@ module.exports = {
         }
         
         // need update
-        let channelid = '881396805370261575'
+        let channelid = '881614075350626344'
         let communityRoles = updateFunRoles()
 
         if (args.length) {
