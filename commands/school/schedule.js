@@ -7,7 +7,7 @@ function updateSchedule() {
     return schedules
 }
             // testing grounds,        UIC Tracker
-var channels = ['870788489770328177', '870476959946268712']
+var channels = ['870788489770328177', '913214102279700520']
 
 module.exports = {
     name: 'schedule',

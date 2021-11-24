@@ -1,5 +1,5 @@
                   // testing grounds,      UIC Tracker
-const channels = ['870788489770328177', '870476959946268712']
+const channels = ['870788489770328177', '913214102279700520']
 require('module-alias/register')
 const { schedules } = require('@Util/school/schedules.json') 
 const addSchedule = require('@Util/school/addSchedule.js') 
