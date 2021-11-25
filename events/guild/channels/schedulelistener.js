@@ -7,6 +7,9 @@ const addSchedule = require('@Util/school/addSchedule.js')
 module.exports = (client, Discord) => {
     client.on('message', message => {
         if (channels.includes(message.channel.id)) {
+            if (message.attachments.size === 0) {
+                return;
+            }
             console.log(message.content)
             //console.log(message.attachments.array()[0].attachment)
             let url = ''
@@ -19,7 +22,7 @@ module.exports = (client, Discord) => {
             let newObj = {
                 userID: user,
                 username: username,
-                semester: 'FALL 2021',
+                semester: 'Spring 2022',
                 scheduleURL: url
             }
             schedules.push(newObj)
@@ -28,7 +31,7 @@ module.exports = (client, Discord) => {
             // get member
             const member = message.guild.members.cache.get(user);
             // role
-            var role = message.member.guild.roles.cache.find(role => role.name === "scheduled");
+            var role = message.member.guild.roles.cache.find(role => role.name === "Scheduler");
             member.roles.add(role);
         }
     })
