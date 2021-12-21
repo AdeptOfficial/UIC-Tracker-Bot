@@ -24,6 +24,7 @@ const handleFunMsg = (client, Discord, channelid, roleList) => {
             trimed = trimed.replace('-', '')
         }
         const Emoji = client.emojis.cache.find(emoji => emoji.name === trimed.toLowerCase())
+        console.log(Emoji);
         if (Emoji) {
             text += `${Emoji}: ${role}\n`
             emojis.push(Emoji)
@@ -86,21 +87,26 @@ module.exports = {
         }
         
         // need update
-        let channelid = '881614075350626344'
+        let channelid = '881614075350626344' // community role channel id
         let communityRoles = updateFunRoles()
 
         if (args.length) {
             message.delete()
             let edit = args[0].toLowerCase()
             if (edit === 'true') {
-                // need update
-                const {guild}  = message
-                const channel = guild.channels.cache.get(channelid)
-                if (channel) {
-                    const messages = await channel.messages.fetch()
-                    const firstMessage = messages.first()
-                    editMessage(client, message, Discord, firstMessage, communityRoles)
-                }
+                // // need update
+                message.channel.messages.fetch("882041356908908595")
+                .then(roleMsg => editMessage(client, message, Discord, roleMsg, communityRoles))
+                .catch(console.error);
+
+                // const {guild}  = message
+                // const channel = guild.channels.cache.get(channelid)
+                // if (channel) {
+                //     const messages = await channel.messages.fetch()
+                //     const firstMessage = messages.first()
+                //     console.log(firstMessage.content)
+                //     editMessage(client, message, Discord, firstMessage, communityRoles)
+                // }
                 return
             }
         } else {
