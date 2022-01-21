@@ -72,10 +72,10 @@ module.exports = {
             return
         }
                     // testing ground Update
-        let channel = '876999575947325470'
+        let channel = '780612474692173854';
                         // CS
         let ccsRoles = ['CS 111', 'CS 141', 'CS 151', 'CS 211', 'CS 251', 'CS 261', 'CS 301', 'CS 341', 'CS 342', 'CS 361', 'CS 362', 'CS 377', 'CS 401']
-        let ecsRoles = ['CS 294', 'CS 411', 'CS 412', 'CS415', 'CS 418', 'CS 421', 'CS 425', 'CS 428', 'CS 440', 'CS 441', 'CS 474', 'CS 480', 'CS 484']
+        let ecsRoles = ['CS 294', 'CS 378', 'CS 411', 'CS 412', 'CS 415', 'CS 418', 'CS 421', 'CS 425', 'CS 428', 'CS 440', 'CS 441', 'CS 454', 'CS 474', 'CS 480', 'CS 484', 'CS 494']
         // Math
         let mathRoles = ['MATH 210', 'MATH 215', 'MATH 220', 'MATH 310']
         // IE
@@ -90,7 +90,7 @@ module.exports = {
             if (courseType.toUpperCase() === 'CORE') {
                 editMessage(client, message, Discord, '881416515721756722', ccsRoles, 'CORE CS')
             } else if (courseType.toUpperCase() === 'TECH') {
-                editMessage(client, message, Discord, '878070432199237683', ecsRoles, 'TECH ELECTIVES')
+                editMessage(client, message, Discord, '927700666711957504', ecsRoles, 'TECH ELECTIVES')
             } else if (courseType.toUpperCase() === 'MATH') {
                 editMessage(client, message, Discord, '878070433516245002', mathRoles, 'MATH')
             } else if (courseType.toUpperCase() === 'IE') {
@@ -100,7 +100,7 @@ module.exports = {
             }
 
             return
-        }
+         }
         
         if (!args.length) {
             handleCourseMsg(client, Discord, channel, ccsRoles, 'CORE CS')
