@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  mongo:
+    container_name: mongo
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - 27017 #Expose port ONLY to internal services, NOT public
+    volumes: #Comment out if on development server and you don't care about persistant data
+      - mongo_data:/data/db #See above
+  bot:
+    container_name: bot
+    build: .
+    environment:
+      - MONGO_URL=mongodb://root:password@mongo
+      - BOT_TOKEN={DISCORD_BOT_TOKEN}
+    depends_on:
+      - mongo
+    links:
+      - mongo:mongo
+      
+volumes:
+  mongo_data:
