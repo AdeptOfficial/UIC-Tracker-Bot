@@ -12,3 +12,5 @@ module.exports = {
     "token" : process.env.BOT_TOKEN, 
     "mongoPath" : process.env.MONGO_URL,
 };
+
+poiauwhgopiuAHWGOP{IGHAW9o0
