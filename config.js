@@ -9,7 +9,8 @@ require('module-alias/register')
 require('dotenv').config();
 
 module.exports = { 
-    "token" : process.env.BOTTOKEN,
-    "ownerToken" : process.env.OWNERTOKEN,    
-    "mongoPath" : process.env.MONGOPATH,
+    "token" : process.env.BOT_TOKEN, 
+    "mongoPath" : process.env.MONGO_URL,
 };
+
+poiauwhgopiuAHWGOP{IGHAW9o0

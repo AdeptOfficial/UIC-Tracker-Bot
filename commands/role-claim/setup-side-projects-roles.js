@@ -82,7 +82,7 @@ module.exports = {
     description: "Setting up community roles reaction message",
     // find the targeted bal user
     async execute (client, message, args, Discord, profileData, prefix) {
-        if (message.author.id != config.ownerToken) {
+        if (message.author.id != message.guild.ownerId) {
             message.reply('You do not have permission to use this command!')
             return
         }
